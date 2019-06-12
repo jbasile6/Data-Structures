@@ -54,8 +54,18 @@ class BinarySearchTree:
 
 
   def get_max(self):
-    pass
+    # keep going right until cur node right does not exist
+    curNode = self
+    if curNode.right is not None:
+      return curNode.right.get_max()
+    else: 
+      return curNode.value
 
   def for_each(self, cb):
-    pass
+    curNode = self
+    if curNode.left is not None:
+      self.left.for_each(cb)
+    if curNode.right is not None:
+      self.right.for_each(cb)
+    return cb(curNode.value)
 
